@@ -31,4 +31,4 @@ var Service = mongoose.model('Service', serviceSchema);
 module.exports = {
 	Product: Product,
 	Service: Service
-}
+};

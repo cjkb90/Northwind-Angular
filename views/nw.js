@@ -2,7 +2,7 @@ var app = angular.module('nwApp',[]);
 
 app.controller('ServicesController', function($scope, $http, $window){
 	
-	$scope.refreshServices = function() {
+	var refreshServices = function() {
 		$http.get('/api/spa')
 		.then(function(response) {
 			return response.data;
@@ -15,11 +15,12 @@ app.controller('ServicesController', function($scope, $http, $window){
 	};
 
 	$scope.title = "Spa";
+  //pass the service you want to delete
 	$scope.delFunc = function(){
 		var elemID = this.service._id;
 		$http.delete('/api/spa/'+elemID)
 		.then(function(){
-			$scope.refreshServices();
+			refreshServices();
 		})
 		.catch(console.error.bind(console));
 	};
@@ -29,7 +30,7 @@ app.controller('ServicesController', function($scope, $http, $window){
 		$http.get('/api/spa/action/prioritize')
 		.then(function(services){
 			$scope.services = services;
-			$scope.refreshServices();
+			refreshServices();
 		})
 		.catch(console.error.bind(console));
 	};
@@ -38,9 +39,9 @@ app.controller('ServicesController', function($scope, $http, $window){
 		$http.post('/spa', $scope.newService)
 		.then(function(res){
 			$scope.postDataResponse=res.data;
-			$scope.refreshServices();
-		})
-	}
-	$scope.refreshServices();
+			refreshServices();
+		});
+	};
 
+	refreshServices();
 });

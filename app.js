@@ -7,15 +7,10 @@ var logger = morgan('dev')
 //Morgan is used to console.log stuff
 
 var bodyParser = require('body-parser')
-//body parser is used to populate req&res.body
-
-// app.set('views','./views');
-// app.set('view engine','html');
-//app.engine('html',swig.renderFile);
-//swig.setDefaults({cache:false});//since we'll be refreshing our pages a lot
-
 app.use(express.static('./public/'));
 app.use(express.static('./views/'));
+
+//we need both of these
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -23,6 +18,8 @@ app.use(logger);
 app.use(routes);
 
 
+//what is going to be in req, res-- if you're not sure and you're not using them-- then don't put them in the code
+//allow port to be set as environment variable
 app.listen(3000, function(req, res){
 });
 
