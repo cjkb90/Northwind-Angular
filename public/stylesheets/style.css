@@ -1,0 +1,18 @@
+body {
+	background-color:orange;
+	padding: 50px;
+	font:16px;
+}
+
+div {
+	display:inline;
+}
+
+ul {
+	clear:both;
+}
+
+li {
+	text-align:center;
+	margin-top: 5px;
+}

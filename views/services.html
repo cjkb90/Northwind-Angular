@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Northwind Products</title>
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+		<link href="stylesheets/style.css" rel="stylesheet">
+		<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+		<script src= './nw.js'> </script>
+	</head>
+	<body ng-app = "nwApp" ng-controller = "ServicesController"> 
+		<div class="container">
+			<div><a href="/">Home</a></div>
+			<div><a href="/spa">Spa</a></div>
+		</div>
+		<h1>Welcome to the {{title}} page!</h1>
+			<div>
+				<form method="POST">
+					<div class="form-group">
+						<label for="name" class="col-sm-2">Service Name</label>
+						<div class="col-sm-10">
+							<input name="name" ng-model="newService.name" type="text"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="priority" class="col-sm-2">Priority</label>
+						<div class="col-sm-10">
+							<input name="priority" ng-model="newService.priority" type="number">
+						</div>
+						<div class="col-sm-1">
+							<button type="submit" ng-click="addService()">Submit</button>
+						</div>
+					</div>
+				</form>
+				<div> 
+					  <ul class="list-group" ng-repeat="service in services">
+					      <li><b>Name:</b> {{service.name}} <b>Priority:</b> {{service.priority}}
+					      <button id="DeleteBtn" ng-click="delFunc()" class="btn-danger">x</button>
+					      <button id="UpBtn" ng-click= "prioritize()" class="btn">Up</button>
+					      <button id="DownBtn" ng-click= "prioritize()" class="btn">Down</button>
+					      </li>
+					  </ul>
+				</div>
+			</div>
+	</body>
+</html>
+
+			<!-- 
+			<div > 
+					{% if services.length > 0 %}
+					  <ul class="list-group">
+					    {% for service in services %}
+					      <li><b>Name:</b> {{service.name}} <b>Priority:</b> {{service.priority}}
+					      <button id="DeleteBtn" ng-click="delFunc()" class="btn-danger">x</button>
+					      <button id="UpBtn" class="btn">Up</button>
+					      <button id="DownBtn" class="btn">Down</button>
+					      </li>
+					    {% endfor %}
+					  </ul>
+					{% else %}
+					  There are no services
+					{% endif %}
+				</div> -->
